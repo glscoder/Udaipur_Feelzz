@@ -1036,45 +1036,47 @@ html, body, .app-container {
   }
 
   .music-player-capsule {
-    padding: 11px 16px;
-    gap: 8px;
-    border-radius: 22px;
+    padding: 7px 13px;
+    gap: 4px;
+    border-radius: 18px;
   }
 
   .player-main-row {
-    gap: 10px;
+    gap: 8px;
   }
 
   .player-art-container {
-    width: 40px;
-    height: 40px;
-  }
-
-  .track-title {
-    font-size: 12.5px;
-  }
-
-  .track-author {
-    font-size: 10.5px;
-  }
-
-  .player-controls {
-    gap: 2px;
-  }
-
-  .prev-btn, .next-btn {
-    width: 28px;
-    height: 28px;
-  }
-
-  .play-pause-btn {
     width: 34px;
     height: 34px;
   }
 
+  .track-title {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .track-author {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  .player-controls {
+    gap: 1px;
+  }
+
+  .prev-btn, .next-btn {
+    width: 24px;
+    height: 24px;
+  }
+
+  .play-pause-btn {
+    width: 30px;
+    height: 30px;
+  }
+
   .icon-btn {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
   }
 
   /* On touch mobile, hide hover popover slider and rely on hardware keys / mute click */
@@ -1083,16 +1085,23 @@ html, body, .app-container {
   }
 
   .player-progress-section {
-    gap: 8px;
+    gap: 6px;
+    padding-top: 0;
+  }
+
+  .progress-bar-track {
+    height: 3px;
   }
 
   .time-text {
-    font-size: 10px;
-    min-width: 26px;
+    font-size: 9.5px;
+    min-width: 24px;
   }
 
   .player-hint-text {
-    font-size: 10px;
+    font-size: 9.5px;
+    margin-top: 4px;
+  }
     margin-top: 6px;
   }
 
