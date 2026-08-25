@@ -231,7 +231,15 @@ export default function MusicPlayer({ onTogglePlaylist, isPlaylistOpen }) {
               <h2 className="track-title">{trackInfo.title}</h2>
             </div>
             <div className="track-author" title={trackInfo.author}>
-              <span>{trackInfo.author}</span>
+              <span className="author-text">{trackInfo.author}</span>
+              {isPlaying && (
+                <div className="dynamic-equalizer is-active" aria-hidden="true" title="Playing">
+                  <span className="eq-bar eq-1" />
+                  <span className="eq-bar eq-2" />
+                  <span className="eq-bar eq-3" />
+                  <span className="eq-bar eq-4" />
+                </div>
+              )}
             </div>
           </div>
 
