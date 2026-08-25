@@ -103,18 +103,17 @@ html, body {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  will-change: transform;
+  will-change: transform, opacity;
   animation: breatheBackground var(--transition-breathing);
-  transition: transform 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
-@keyframes breatheBackground {
-  0% {
-    transform: scale(1.01);
-  }
-  100% {
-    transform: scale(1.035);
-  }
+.background-image.active-scene {
+  opacity: 1;
+}
+
+.background-image.inactive-scene {
+  opacity: 0;
 }
 
 /* Subtle vintage gouache paper grain */
@@ -125,6 +124,7 @@ html, body {
   background-image: radial-gradient(#000 1px, transparent 1px);
   background-size: 3px 3px;
   pointer-events: none;
+  z-index: 5;
 }
 
 /* Soft Edge Vignette */
@@ -138,6 +138,93 @@ html, body {
     rgba(15, 9, 7, 0.6) 100%
   );
   pointer-events: none;
+  z-index: 6;
+}
+
+/* ==========================================================================
+   EDGE SCENE NAVIGATION ARROWS
+   ========================================================================== */
+.scene-nav-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.scene-arrow-btn {
+  pointer-events: auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(30, 18, 14, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 231, 200, 0.18);
+  color: var(--color-cream-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.65;
+  transition: all var(--transition-smooth);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.scene-arrow-btn:hover {
+  opacity: 1;
+  color: var(--color-cream-light);
+  background: rgba(48, 28, 22, 0.75);
+  border-color: rgba(245, 231, 200, 0.35);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 12px var(--color-terracotta-glow);
+}
+
+.scene-arrow-btn:active {
+  transform: scale(0.95);
+}
+
+/* Scene Dot Indicators */
+.scene-dots-container {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  display: flex;
+  gap: 6px;
+  z-index: 12;
+  pointer-events: auto;
+  background: rgba(30, 18, 14, 0.4);
+  backdrop-filter: blur(8px);
+  padding: 4px 8px;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 231, 200, 0.1);
+}
+
+.scene-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(245, 231, 200, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition-fast);
+}
+
+.scene-dot.active {
+  background: var(--color-gold);
+  width: 14px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px var(--color-gold);
+}
+
+.scene-dot:hover {
+  background: var(--color-cream-light);
 }
 
 /* ==========================================================================
@@ -1101,6 +1188,22 @@ html, body, .app-container {
   .player-hint-text {
     font-size: 9.5px;
     margin-top: 4px;
+  }
+
+  .scene-nav-controls {
+    padding: 0 8px;
+  }
+
+  .scene-arrow-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(30, 18, 14, 0.6);
+  }
+
+  .scene-dots-container {
+    bottom: max(16px, env(safe-area-inset-bottom, 16px));
+    right: 14px;
+    padding: 3px 6px;
   }
 
   .drawer-panel {
